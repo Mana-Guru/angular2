@@ -1,19 +1,19 @@
 import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common'; 
-import {TodoService} from './todo.service';
+import {TodoService,TodoModel} from './todo.service';
 
 @Component ({
     selector: 'todo-input',
     directives: [FORM_DIRECTIVES],
     template: `
     <form (ngSubmit)="onSubmit()">
-        <input type="text" [(ngModel)]="todoModel"> {{todoModel}}
+        <input type="text" [(ngModel)]="todoModel.title">
     </form>
     `
 })
 
 export class TodoInput{
-    todoModel;
+    todoModel:TodoModel = new TodoModel();
     
     constructor(public todoService:TodoService) {
         console.log(todoService)
@@ -24,7 +24,7 @@ export class TodoInput{
     }
     onSubmit() {
         this.todoService.addTodo(this.todoModel);
-        this.todoModel = "";
+        this.todoModel = new TodoModel();
     }
     
 }
