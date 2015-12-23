@@ -1,7 +1,13 @@
 
 export class TodoModel {
     status:string = "started";
-    constructor(public title:string = ""){}
+    constructor(public title:string = ""){};
+    toggle():void {
+        if (this.status == 'started')
+            this.status = 'completed';
+        else
+            this.status = 'started';
+    }
 }
 export class TodoService {
     todos:TodoModel[] = [
