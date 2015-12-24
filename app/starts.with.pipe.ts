@@ -1,7 +1,8 @@
 import {Pipe} from "angular2/core";
 
 @Pipe({
-    name: 'startsWith'
+    name: 'startsWith',
+    pure: false
 })
 export class StartsWith{
     transform(value, [field,letter]) {
